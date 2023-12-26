@@ -1,0 +1,146 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html {
+    background: linear-gradient(35deg, indigo,cyan);
+    font-family: Cursive;
+}
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    position: relative;
+    flex-direction: column;
+    color: azure;
+}
+.title h1 {
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+.game {
+    position: relative;
+    width: 330px;
+    height: 550px;
+    background: rgba(0,0,0,0.3);
+    border-radius: 12px;
+    padding: 10px;
+}
+.controls {
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.controls button {
+    padding: 5px;
+    border-radius: 8px;
+    font-size: 16px;
+    background: linear-gradient(45deg, indigo, aqua);
+    border-top: 0.5px solid indigo;
+    border-left: 0.5px solid aqua;
+    border-bottom: 0.5px solid aqua;
+    border-right: 0.5px solid indigo;
+    color: azure;
+    letter-spacing: 2px;
+    cursor: pointer;
+    font-family: cursive;
+}
+.controls button:disabled {
+    opacity: 0.5;
+}
+.controls button:active {
+    opacity: 0.5;
+}
+.controls .moves {
+    text-decoration: underline;
+    font-size: 18px;
+}
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    height: 90%;
+    padding: 8px;
+}
+.container .board {
+    width: 320px;
+    height: 320px;
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-template-rows: repeat(4,1fr);
+    gap: 2px;
+}
+.board div {
+    border: 1px solid silver;
+    border-radius: 8px;
+    background: linear-gradient(55deg, indigo, aqua);
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+}
+.board div::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 10%;
+    height: 150%;
+    background: linear-gradient(to left,rgba(240, 255, 255, 0.1),transparent);
+    animation: shine 6s linear infinite;
+    transform: rotate(-45deg);
+}
+@keyframes shine {
+    100% {
+        left: 150%;
+        top: -150%;
+    }
+}
+.board div img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transition: opacity 0.8s ease;
+    opacity: 0;
+}
+div.flip img{
+    opacity: 1;
+}
+div.shake {
+    animation: shake 0.5s ease-in-out;
+}
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    20% {
+        transform: translateX(-15px);
+    }
+    40% {
+        transform: translateX(15px);
+    }
+    60% {
+        transform: translateX(-8px);
+    }
+    80% {
+        transform: translateX(8px);
+    }
+}
+
+
+div.displaying img{
+    opacity: 1;
+}
+.timer {
+    width: 100%;
+    text-align: center;
+}
+
+.hide {
+    z-index: -20;
+}
